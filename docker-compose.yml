@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: sessiondb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  nestjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_HOST: postgres
+      DATABASE_USER: user
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: sessiondb
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    command: npm run start:dev
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8081:8080"
+
+volumes:
+  postgres_data:
