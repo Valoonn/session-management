@@ -21,8 +21,8 @@ This project implements a session management system using NestJS, TypeORM, and P
 1. **Clone the repository:**
 
    ```bash
-   git clone https://your-repository-url.git
-   cd session-management-api
+   git clone https://github.com/Valoonn/session-management.git
+   cd session-management
    ```
 
 2. **Build and run the Docker containers:**
