@@ -15,11 +15,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      DATABASE_HOST: postgres
-      DATABASE_USER: user
-      DATABASE_PASSWORD: password
-      DATABASE_NAME: sessiondb
     ports:
       - "8080:8080"
     depends_on:
